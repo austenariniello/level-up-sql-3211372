@@ -5,3 +5,13 @@
 -- Stevensen, Stephensen, Stevenson, Stephenson, Stuyvesant
 
 -- There are four people in the party. Today is June 14th.
+
+SELECT *
+FROM Reservations
+WHERE CustomerID = (
+  SELECT CustomerID
+  FROM Customers
+  WHERE LastName LIKE 'St%n%'
+)
+  AND PartySize = 4
+  AND Date LIKE '%06-14%';
